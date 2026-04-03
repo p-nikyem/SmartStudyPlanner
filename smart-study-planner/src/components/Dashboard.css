@@ -1,0 +1,164 @@
+.dash {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-sm);
+  animation: fadeUp 0.4s 0.05s ease both;
+}
+
+.dash__top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.dash__date {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  margin-bottom: 0.2rem;
+}
+
+.dash__heading {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  color: var(--text-primary);
+}
+
+.dash__overall {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.15rem;
+}
+
+.dash__ring {
+  width: 44px;
+  height: 44px;
+}
+
+.dash__overall-label {
+  font-size: 0.625rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+}
+
+/* Status */
+.dash__status {
+  font-size: 0.875rem;
+  line-height: 1.5;
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius-md);
+  margin-bottom: 1rem;
+}
+
+.dash__status--neutral { background: var(--bg-subtle); color: var(--text-secondary); }
+.dash__status--good    { background: var(--accent-light); color: var(--accent); }
+.dash__status--great   { background: var(--accent-light); color: var(--accent); font-weight: 500; }
+
+/* Overdue banner */
+.dash__overdue-banner {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8125rem;
+  color: var(--amber);
+  background: var(--amber-light);
+  border-radius: var(--radius-md);
+  padding: 0.6rem 0.875rem;
+  margin-bottom: 1rem;
+}
+
+.dash__overdue-icon { font-size: 0.625rem; }
+
+/* Tasks */
+.dash__tasks {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.dash__task {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 0.6rem 0.5rem;
+  border-radius: var(--radius-sm);
+  animation: slideIn 0.25s ease both;
+  transition: background 0.15s;
+}
+
+.dash__task:hover { background: var(--bg-subtle); }
+.dash__task--done { opacity: 0.5; }
+
+.dash__check {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 2px solid var(--border-strong);
+  background: var(--bg-card);
+  flex-shrink: 0;
+  margin-top: 1px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: 700;
+  color: white;
+  transition: border-color 0.15s, background 0.15s, transform 0.15s;
+}
+
+.dash__check:hover {
+  border-color: var(--accent);
+  transform: scale(1.1);
+}
+
+.dash__check--checked {
+  border-color: var(--accent);
+  background: var(--accent);
+  animation: checkPop 0.25s ease;
+}
+
+.dash__task-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.dash__task-label {
+  font-size: 0.9rem;
+  color: var(--text-primary);
+  line-height: 1.4;
+}
+
+.dash__task--done .dash__task-label {
+  text-decoration: line-through;
+  color: var(--text-muted);
+}
+
+.dash__task-source {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+/* Free day */
+.dash__free {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  padding: 1rem 0.5rem;
+  color: var(--text-muted);
+  font-size: 0.875rem;
+  font-style: italic;
+}
+
+.dash__free-icon {
+  color: var(--accent);
+  font-size: 0.875rem;
+}
