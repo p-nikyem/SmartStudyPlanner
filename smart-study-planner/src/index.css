@@ -106,7 +106,4 @@ input, select, textarea {
   to   { stroke-dashoffset: var(--arc-offset); }
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
+
