@@ -1,0 +1,173 @@
+.aform {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  padding: 2rem;
+  box-shadow: var(--shadow-md);
+  animation: fadeUp 0.4s ease both;
+}
+
+.aform__header { margin-bottom: 1.75rem; }
+
+.aform__title {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  color: var(--text-primary);
+  margin-bottom: 0.25rem;
+}
+
+.aform__subtitle {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+}
+
+.aform__field {
+  margin-bottom: 1.25rem;
+}
+
+.aform__label {
+  display: block;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 0.5rem;
+}
+
+.aform__input {
+  width: 100%;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 0.75rem 1rem;
+  font-size: 0.9375rem;
+  color: var(--text-primary);
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.aform__input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(61, 122, 94, 0.12);
+}
+
+.aform__input--date {
+  cursor: pointer;
+  color-scheme: light;
+}
+
+.aform__field--error .aform__input {
+  border-color: var(--coral);
+}
+
+.aform__error {
+  display: block;
+  font-size: 0.8125rem;
+  color: var(--coral);
+  margin-top: 0.35rem;
+}
+
+.aform__select-wrap {
+  position: relative;
+}
+
+.aform__select {
+  width: 100%;
+  appearance: none;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 0.75rem 2.5rem 0.75rem 1rem;
+  font-size: 0.9375rem;
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: border-color 0.15s;
+}
+
+.aform__select:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(61, 122, 94, 0.12);
+}
+
+.aform__select-arrow {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: var(--text-muted);
+  font-size: 0.75rem;
+}
+
+.aform__difficulty {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+}
+
+.aform__diff-btn {
+  background: var(--bg);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 0.65rem 0.5rem;
+  text-align: center;
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s, transform 0.1s;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.aform__diff-btn:hover {
+  border-color: var(--border-strong);
+  transform: translateY(-1px);
+}
+
+.aform__diff-btn--active {
+  border-color: var(--accent);
+  background: var(--accent-light);
+}
+
+.aform__diff-label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.aform__diff-desc {
+  display: block;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.aform__diff-btn--active .aform__diff-label {
+  color: var(--accent);
+}
+
+.aform__submit {
+  width: 100%;
+  margin-top: 0.5rem;
+  background: var(--text-primary);
+  color: var(--bg-card);
+  border-radius: var(--radius-md);
+  padding: 0.875rem 1.5rem;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  transition: background 0.15s, transform 0.1s, opacity 0.15s;
+}
+
+.aform__submit:hover:not(:disabled) {
+  background: #2d2b28;
+  transform: translateY(-1px);
+}
+
+.aform__submit:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.aform__submit--loading {
+  opacity: 0.7;
+  cursor: wait;
+}
