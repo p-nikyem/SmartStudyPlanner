@@ -1,70 +1,168 @@
-# Getting Started with Create React App
+# Smart Study Planner
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Smart Study Planner is a React web app that helps students break assignments into smaller tasks and spread work over the days leading to a deadline.
+
+## Features
+
+- Add assignments with title, deadline, type, and workload level.
+- Auto-generate sub-tasks based on assignment type.
+- Auto-schedule tasks from today to the deadline (heavier tasks are placed earlier).
+- Track progress by assignment and by daily focus view.
+- See workload density for the next 7 days.
+- Mark tasks complete/incomplete and remove assignments.
+
+## Tech Stack
+
+- React 19
+- Create React App (`react-scripts` 5)
+- Plain CSS modules per component
+
+## Prerequisites
+
+Install these tools before running:
+
+- Node.js 18 LTS or newer
+- npm (comes with Node.js)
+
+Check versions:
+
+```bash
+node -v
+npm -v
+```
+
+## Project Location
+
+From the repository root, the app is inside:
+
+`smart-study-planner/`
+
+All runtime commands below should be run from that folder.
+
+## Quick Start (Development)
+
+1. Move into the app directory:
+
+```bash
+cd smart-study-planner
+```
+
+2. Install dependencies:
+
+```bash
+npm install
+```
+
+3. Start the development server:
+
+```bash
+npm start
+```
+
+4. Open the app:
+
+`http://localhost:3000`
 
 ## Available Scripts
 
-In the project directory, you can run:
+In `smart-study-planner/`, you can run:
 
-### `npm start`
+- `npm start`
+  - Runs the app in development mode on port 3000 by default.
+  - Auto-reloads when files change.
+- `npm test`
+  - Starts the Jest test runner in watch mode.
+- `npm run build`
+  - Builds an optimized production bundle in `build/`.
+- `npm run eject`
+  - Permanently exposes CRA config files. Use only if you need custom tooling.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+For CI or a one-time test run:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+```bash
+npm test -- --watchAll=false
+```
 
-### `npm test`
+## How to Use the App
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. Open the **Add Assignment** view.
+2. Enter:
+   - Assignment title
+   - Deadline (must be a future date)
+   - Assignment type
+   - Workload level (`Light`, `Moderate`, or `Intensive`)
+3. Submit to generate a study plan.
+4. Use:
+   - **Today's Focus** for tasks scheduled today and overdue items.
+   - **Assignments** for full progress tracking and task completion.
+   - **Next 7 days** gauge for workload overview.
 
-### `npm run build`
+## Scheduling and Task Logic
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Task templates are defined by assignment type in `src/logic/decompose.js`.
+- Difficulty adjusts task set size:
+  - `easy`: fewer tasks
+  - `medium`: default tasks
+  - `hard`: adds extra revision task
+- Date scheduling happens in `src/logic/schedule.js`:
+  - Sorts tasks by weight (heavy first)
+  - Spreads tasks between today and deadline
+  - Assigns earlier dates to heavier tasks
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Project Structure
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```text
+smart-study-planner/
+  public/
+  src/
+    components/
+      AssignmentForm.jsx
+      Dashboard.jsx
+      ProgressTracker.jsx
+      WorkloadGauge.jsx
+    logic/
+      decompose.js
+      schedule.js
+    App.jsx
+    index.js
+  package.json
+```
 
-### `npm run eject`
+## Production Build
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Create a production bundle:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```bash
+cd smart-study-planner
+npm run build
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+The output is generated in:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+`smart-study-planner/build/`
 
-## Learn More
+To serve it locally:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```bash
+npx serve -s build
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Troubleshooting
 
-### Code Splitting
+- `npm install` fails or dependencies are missing:
+  - Delete `node_modules` and `package-lock.json`, then run `npm install` again.
+- `Port 3000 is already in use`:
+  - Windows PowerShell:
+    ```powershell
+    $env:PORT=3001
+    npm start
+    ```
+- App data disappears after refresh:
+  - Current implementation stores assignments in memory only (no backend or local storage persistence yet).
+- Deadline validation error:
+  - The app only accepts future dates (not today or past dates).
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Notes
 
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- This project was created for SOEN 357 (Concordia University).
+- Current version is frontend-only with no authentication or database.
