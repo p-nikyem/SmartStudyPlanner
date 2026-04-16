@@ -32,15 +32,6 @@ Open:
 
 `http://localhost:3000`
 
-## Useful Scripts
-
-Run all commands from `smart-study-planner/`:
-
-- `npm start` - start local development server
-- `npm test` - run tests in watch mode
-- `npm test -- --watchAll=false` - one-time test run
-- `npm run build` - create production build in `build/`
-- `npm run eject` - expose CRA config (one-way)
 
 ## Production Build
 
